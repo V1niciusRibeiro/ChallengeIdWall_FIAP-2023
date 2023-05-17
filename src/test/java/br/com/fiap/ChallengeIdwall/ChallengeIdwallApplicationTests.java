@@ -1,10 +1,10 @@
-package br.com.fiap.ChallengeIdwall;
+package br.com.fiap.ChallengeIdWall;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ChallengeIdwallApplicationTests {
+class ChallengeIdWallApplicationTests {
 
 	@Test
 	void contextLoads() {

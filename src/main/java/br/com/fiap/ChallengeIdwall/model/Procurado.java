@@ -1,4 +1,4 @@
-package br.com.fiap.ChallengeIdwall.model;
+package br.com.fiap.ChallengeIdWall.model;
 
 import jakarta.persistence.*;
 import java.util.List;
@@ -9,21 +9,22 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Table(name = "T_PROCURADO")
 public class Procurado {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @SequenceGenerator(name = "procurado", sequenceName = "SQ_PROCURADO", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "procurado")
     private int id;
 
     @Column(name = "nasc_local")
     private String localNascimento;
 
     @Column(name = "altura")
-    private Double altura;
+    private  String altura;
 
     @Column(name = "cor_Olhos")
     private String corOlhos;
 
     @Column(name = "peso")
-    private Double peso;
+    private  String peso;
 
     @Column(name = "cor_Cabelo")
     private String corCabelo;
@@ -44,7 +45,7 @@ public class Procurado {
     private Boolean perigo;
 
     @Column(name = "recompensa")
-    private Double recompensa;
+    private  String recompensa;
 
     @Column(name = "raca")
     private String raca;
@@ -94,11 +95,11 @@ public class Procurado {
     }
 
 
-    public Double getAltura() {
+    public  String getAltura() {
         return altura;
     }
 
-    public void setAltura(Double altura) {
+    public void setAltura( String altura) {
         this.altura = altura;
     }
 
@@ -110,11 +111,11 @@ public class Procurado {
         this.corOlhos = corOlhos;
     }
 
-    public Double getPeso() {
+    public  String getPeso() {
         return peso;
     }
 
-    public void setPeso(Double peso) {
+    public void setPeso( String peso) {
         this.peso = peso;
     }
 
@@ -168,11 +169,11 @@ public class Procurado {
         this.perigo = perigo;
     }
 
-    public Double getRecompensa() {
+    public  String getRecompensa() {
         return recompensa;
     }
 
-    public void setRecompensa(Double recompensa) {
+    public void setRecompensa( String recompensa) {
         this.recompensa = recompensa;
     }
 
@@ -184,7 +185,7 @@ public class Procurado {
         this.raca = raca;
     }
 
-    public Procurado(int id, String localNascimento, Double altura, String corOlhos, Double peso, String corCabelo, String ocupacao, String idiomas, String nacionalidade, String descricao, Boolean perigo, Double recompensa, String raca, List<Crime> crime, List<Registro> registro) {
+    public Procurado(int id, String localNascimento,  String altura, String corOlhos,  String peso, String corCabelo, String ocupacao, String idiomas, String nacionalidade, String descricao, Boolean perigo,  String recompensa, String raca, List<Crime> crime, List<Registro> registro) {
         super();
         this.id = id;
         this.localNascimento = localNascimento;
@@ -204,8 +205,5 @@ public class Procurado {
     }
 
     public Procurado() {}
-
-
-
 
 }

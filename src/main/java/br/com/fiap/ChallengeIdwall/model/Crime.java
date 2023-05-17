@@ -1,4 +1,4 @@
-package br.com.fiap.ChallengeIdwall.model;
+package br.com.fiap.ChallengeIdWall.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -7,8 +7,9 @@ import jakarta.persistence.*;
 @Table(name = "T_CRIME")
 public class Crime {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_crime")
+    @SequenceGenerator(name = "crime", sequenceName = "SQ_CRIME", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "crime")
     private int id;
 
     @Column(name = "tipo")
@@ -21,7 +22,7 @@ public class Crime {
     @JoinColumn(name = "id_procurado")
     @JsonBackReference(value="crimes")
     private Procurado procurado;
-    
+
     public Crime() {}
 
     public Crime(int id, String tipo, String descricao, Procurado procurado) {
@@ -30,7 +31,7 @@ public class Crime {
         this.descricao = descricao;
         this.procurado = procurado;
     }
-    
+
     @JsonBackReference
     public Procurado getProcurado() {
         return procurado;

@@ -1,7 +1,7 @@
-package br.com.fiap.ChallengeIdwall.controller;
+package br.com.fiap.ChallengeIdWall.controller;
 
-import br.com.fiap.ChallengeIdwall.model.Registro;
-import br.com.fiap.ChallengeIdwall.repository.RegistroRepository;
+import br.com.fiap.ChallengeIdWall.model.Registro;
+import br.com.fiap.ChallengeIdWall.repository.RegistroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("registro")
 public class RegistroResource {
+
     @Autowired
     private RegistroRepository registroRepository;
-
 
     @GetMapping
     public List<Registro> getAll(){
@@ -25,7 +25,7 @@ public class RegistroResource {
     public Registro getById(@PathVariable Integer id){
         return registroRepository.findById(id).get();
     }
-    
+
     @GetMapping("nome")
     public List<Registro> buscapornome(@RequestParam String nome){
         return registroRepository.findByNome(nome);
@@ -51,7 +51,6 @@ public class RegistroResource {
     public Registro cadastrar(@RequestBody Registro registro){
         return registroRepository.save(registro);
     }
-
 
     @PutMapping("{id}")
     public Registro atualiza(@RequestBody Registro registro, @PathVariable Integer id){
