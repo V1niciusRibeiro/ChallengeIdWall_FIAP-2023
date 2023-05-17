@@ -1,7 +1,5 @@
 package br.com.fiap.ChallengeIdwall.controller;
 
-import br.com.fiap.ChallengeIdwall.model.Crime;
-import br.com.fiap.ChallengeIdwall.model.Procurado;
 import br.com.fiap.ChallengeIdwall.model.Registro;
 import br.com.fiap.ChallengeIdwall.repository.RegistroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,34 +17,15 @@ public class RegistroResource {
 
 
     @GetMapping
-    public List<Registro> listar(){
+    public List<Registro> getAll(){
         return registroRepository.findAll();
     }
 
     @GetMapping("{id}")
-    public Registro buscarporchave(@PathVariable Integer id){
+    public Registro getById(@PathVariable Integer id){
         return registroRepository.findById(id).get();
     }
-
-    @ResponseStatus(code = HttpStatus.CREATED)
-    @PostMapping
-    public Registro cadastrar(@RequestBody Registro registro){
-        return registroRepository.save(registro);
-    }
-
-
-    @PutMapping("{id}")
-    public Registro atualiza(@RequestBody Registro registro, @PathVariable Integer id){
-        registro.setId(id);
-        return registroRepository.save(registro);
-    }
-
-    @DeleteMapping("{id}")
-    public void excluir(@PathVariable Integer id){
-        Registro registro = buscarporchave(id);
-        registroRepository.delete(registro);
-    }
-
+    
     @GetMapping("nome")
     public List<Registro> buscapornome(@RequestParam String nome){
         return registroRepository.findByNome(nome);
@@ -65,6 +44,25 @@ public class RegistroResource {
     @GetMapping("sexo")
     public List<Registro> buscaporsexo(@RequestParam String sexo){
         return registroRepository.findBySexo(sexo);
+    }
+
+    @ResponseStatus(code = HttpStatus.CREATED)
+    @PostMapping
+    public Registro cadastrar(@RequestBody Registro registro){
+        return registroRepository.save(registro);
+    }
+
+
+    @PutMapping("{id}")
+    public Registro atualiza(@RequestBody Registro registro, @PathVariable Integer id){
+        registro.setId(id);
+        return registroRepository.save(registro);
+    }
+
+    @DeleteMapping("{id}")
+    public void excluir(@PathVariable Integer id){
+        Registro registro = getById(id);
+        registroRepository.delete(registro);
     }
 
 }

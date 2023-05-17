@@ -1,8 +1,9 @@
 package br.com.fiap.ChallengeIdwall.model;
 
 import jakarta.persistence.*;
-
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "T_PROCURADO")
@@ -13,7 +14,7 @@ public class Procurado {
     private int id;
 
     @Column(name = "nasc_local")
-    private String nasclocal;
+    private String localNascimento;
 
     @Column(name = "altura")
     private Double altura;
@@ -49,11 +50,14 @@ public class Procurado {
     private String raca;
 
     @OneToMany(mappedBy = "procurado")
+    @JsonManagedReference(value="crimes")
     private List<Crime> crime;
 
     @OneToMany(mappedBy = "procurado")
+    @JsonManagedReference(value="registros")
     private List<Registro> registro;
 
+    @JsonManagedReference
     public List<Registro> getRegistro() {
         return registro;
     }
@@ -62,6 +66,7 @@ public class Procurado {
         this.registro = registro;
     }
 
+    @JsonManagedReference
     public List<Crime> getCrime() {
         return crime;
     }
@@ -80,12 +85,12 @@ public class Procurado {
         return this;
     }
 
-    public String getNascLocal() {
-        return nasclocal;
+    public String getlocalNascimento() {
+        return localNascimento;
     }
 
-    public void setNasclocal(String nasclocal) {
-        this.nasclocal = nasclocal;
+    public void setlocalNascimento(String localNascimento) {
+        this.localNascimento = localNascimento;
     }
 
 
@@ -179,10 +184,10 @@ public class Procurado {
         this.raca = raca;
     }
 
-    public Procurado(int id, String nasclocal, Double altura, String corOlhos, Double peso, String corCabelo, String ocupacao, String idiomas, String nacionalidade, String descricao, Boolean perigo, Double recompensa, String raca, List<Crime> crime, List<Registro> registro) {
+    public Procurado(int id, String localNascimento, Double altura, String corOlhos, Double peso, String corCabelo, String ocupacao, String idiomas, String nacionalidade, String descricao, Boolean perigo, Double recompensa, String raca, List<Crime> crime, List<Registro> registro) {
         super();
         this.id = id;
-        this.nasclocal = nasclocal;
+        this.localNascimento = localNascimento;
         this.altura = altura;
         this.corOlhos = corOlhos;
         this.peso = peso;
