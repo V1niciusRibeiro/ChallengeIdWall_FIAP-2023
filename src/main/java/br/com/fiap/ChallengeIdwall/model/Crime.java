@@ -1,7 +1,7 @@
 package br.com.fiap.ChallengeIdwall.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "T_CRIME")
@@ -19,8 +19,19 @@ public class Crime {
 
     @ManyToOne
     @JoinColumn(name = "id_procurado")
+    @JsonBackReference(value="crimes")
     private Procurado procurado;
+    
+    public Crime() {}
 
+    public Crime(int id, String tipo, String descricao, Procurado procurado) {
+        this.id = id;
+        this.tipo = tipo;
+        this.descricao = descricao;
+        this.procurado = procurado;
+    }
+    
+    @JsonBackReference
     public Procurado getProcurado() {
         return procurado;
     }
@@ -53,14 +64,5 @@ public class Crime {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public Crime() {}
-
-    public Crime(int id, String tipo, String descricao, Procurado procurado) {
-        this.id = id;
-        this.tipo = tipo;
-        this.descricao = descricao;
-        this.procurado = procurado;
     }
 }

@@ -2,6 +2,9 @@ package br.com.fiap.ChallengeIdwall.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.util.Calendar;
 @Entity
 @Table(name = "T_REGISTRO")
@@ -28,8 +31,10 @@ public class Registro {
 
     @ManyToOne
     @JoinColumn(name = "id_procurado")
+    @JsonBackReference(value="registros")
     private Procurado procurado;
 
+    @JsonBackReference
     public Procurado getProcurado() {
         return procurado;
     }

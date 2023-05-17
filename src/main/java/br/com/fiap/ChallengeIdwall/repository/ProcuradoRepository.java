@@ -10,6 +10,6 @@ public interface ProcuradoRepository  extends JpaRepository<Procurado, Integer> 
   //  List<Procurado> findByIdProcurado(Integer id);
 
      List<Procurado> findByAltura(Double altura);
-     List<Procurado> findByNasclocal(String nasclocal);
+     List<Procurado> findByLocalNascimento(String nasclocal);
 
 }
