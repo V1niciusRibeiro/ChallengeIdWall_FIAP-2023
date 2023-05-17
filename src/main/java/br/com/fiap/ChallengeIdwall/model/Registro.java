@@ -1,4 +1,4 @@
-package br.com.fiap.ChallengeIdwall.model;
+package br.com.fiap.ChallengeIdWall.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -11,8 +11,9 @@ import java.util.Calendar;
 public class Registro {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_registro")
+    @SequenceGenerator(name = "registro", sequenceName = "SQ_REGISTRO", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "registro")
     private int id;
 
     @Column(name = "nome")
@@ -98,4 +99,5 @@ public class Registro {
     }
 
     public Registro() {}
+
 }

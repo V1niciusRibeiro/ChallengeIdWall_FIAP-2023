@@ -1,8 +1,8 @@
-package br.com.fiap.ChallengeIdwall.controller;
+package br.com.fiap.ChallengeIdWall.controller;
 
-import br.com.fiap.ChallengeIdwall.model.Crime;
-import br.com.fiap.ChallengeIdwall.model.Procurado;
-import br.com.fiap.ChallengeIdwall.repository.CrimeRepository;
+import br.com.fiap.ChallengeIdWall.model.Crime;
+import br.com.fiap.ChallengeIdWall.model.Procurado;
+import br.com.fiap.ChallengeIdWall.repository.CrimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public class CrimeResource {
     public Crime getById(@PathVariable Integer id){
         return crimeRepository.findById(id).get();
     }
-    
+
     @GetMapping("tipo")
     public List<Crime> getByTipo(@RequestParam String tipo){
         return crimeRepository.findByTipo(tipo);
@@ -47,10 +47,11 @@ public class CrimeResource {
         crime.setId(id);
         return crimeRepository.save(crime);
     }
-    
+
     @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id){
         Crime crime = getById(id);
         crimeRepository.delete(crime);
     }
+    
 }

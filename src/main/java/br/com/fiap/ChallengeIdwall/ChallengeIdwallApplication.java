@@ -1,13 +1,13 @@
-package br.com.fiap.ChallengeIdwall;
+package br.com.fiap.ChallengeIdWall;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ChallengeIdwallApplication {
+public class ChallengeIdWallApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ChallengeIdwallApplication.class, args);
+		SpringApplication.run(ChallengeIdWallApplication.class, args);
 	}
 
 }
