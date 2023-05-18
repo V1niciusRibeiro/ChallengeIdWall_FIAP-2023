@@ -9,4 +9,5 @@ import java.util.List;
 public interface CrimeRepository extends JpaRepository<Crime, Integer> {
     List<Crime> findByTipo(String tipo);
     List<Crime> findByDescricao(String descricao);
+    List<Crime> findByPaisId(int id);
 }

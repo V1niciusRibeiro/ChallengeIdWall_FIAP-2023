@@ -23,13 +23,19 @@ public class Crime {
     @JsonBackReference(value="crimes")
     private Procurado procurado;
 
+    @ManyToOne
+    @JoinColumn(name = "id_pais")
+    @JsonBackReference(value="pais")
+    private Pais pais;
+
     public Crime() {}
 
-    public Crime(int id, String tipo, String descricao, Procurado procurado) {
+    public Crime(int id, String tipo, String descricao, Procurado procurado, Pais pais) {
         this.id = id;
         this.tipo = tipo;
         this.descricao = descricao;
         this.procurado = procurado;
+        this.pais = pais;
     }
 
     @JsonBackReference
@@ -65,5 +71,15 @@ public class Crime {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    @JsonBackReference
+    public Pais getPais() {
+        return pais;
+    }
+
+    public Crime setPais(Pais pais) {
+        this.pais = pais;
+        return this;
     }
 }
