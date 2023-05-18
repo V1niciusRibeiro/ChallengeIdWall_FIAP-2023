@@ -32,12 +32,6 @@ public class Procurado {
     @Column(name = "ocupacao")
     private String ocupacao;
 
-    @Column(name = "idiomas")
-    private String idiomas;
-
-    @Column(name = "nacionalidade")
-    private String nacionalidade;
-
     @Column(name = "descricao")
     private String descricao;
 
@@ -51,20 +45,32 @@ public class Procurado {
     private String raca;
 
     @OneToMany(mappedBy = "procurado")
+    @JsonManagedReference(value="idiomas")
+    private List<IdiomaFalado> idiomas;
+
+    @OneToMany(mappedBy = "procurado")
     @JsonManagedReference(value="crimes")
     private List<Crime> crime;
 
     @OneToMany(mappedBy = "procurado")
-    @JsonManagedReference(value="registros")
-    private List<Registro> registro;
+    @JsonManagedReference(value="identidade")
+    private List<Identidade> identidade;
+
+    @OneToMany(mappedBy = "procurado")
+    @JsonManagedReference(value="nacionalidade")
+    private List<Nacionalidade> nacionalidade;
+
+    @OneToMany(mappedBy = "procurado")
+    @JsonManagedReference(value="apelidos")
+    private List<Apelido> apelidos;
 
     @JsonManagedReference
-    public List<Registro> getRegistro() {
-        return registro;
+    public List<Identidade> getRegistro() {
+        return identidade;
     }
 
-    public void setRegistro(List<Registro> registro) {
-        this.registro = registro;
+    public void setRegistro(List<Identidade> identidade) {
+        this.identidade = identidade;
     }
 
     @JsonManagedReference
@@ -135,22 +141,23 @@ public class Procurado {
         this.ocupacao = ocupacao;
     }
 
-    public String getIdiomas() {
+    @JsonManagedReference
+    public List<IdiomaFalado> getIdiomas() {
         return idiomas;
     }
 
-    public void setIdiomas(String idiomas) {
+    public void setIdiomas(List<IdiomaFalado> idiomas) {
         this.idiomas = idiomas;
     }
 
-    public String getNacionalidade() {
+    @JsonManagedReference
+    public List<Nacionalidade> getNacionalidade() {
         return nacionalidade;
     }
 
-    public void setNacionalidade(String nacionalidade) {
+    public void setNacionalidade(List<Nacionalidade> nacionalidade) {
         this.nacionalidade = nacionalidade;
     }
-
 
     public String getDescricao() {
         return descricao;
@@ -185,8 +192,20 @@ public class Procurado {
         this.raca = raca;
     }
 
-    public Procurado(int id, String localNascimento,  String altura, String corOlhos,  String peso, String corCabelo, String ocupacao, String idiomas, String nacionalidade, String descricao, Boolean perigo,  String recompensa, String raca, List<Crime> crime, List<Registro> registro) {
-        super();
+    @JsonManagedReference
+    public List<Apelido> getApelidos() {
+        return apelidos;
+    }
+
+    public Procurado setApelidos(List<Apelido> apelidos) {
+        this.apelidos = apelidos;
+        return this;
+    }
+
+    public Procurado() {
+    }
+
+    public Procurado(int id, String localNascimento, String altura, String corOlhos, String peso, String corCabelo, String ocupacao, String descricao, Boolean perigo, String recompensa, String raca, List<IdiomaFalado> idiomas, List<Crime> crime, List<Identidade> identidade, List<Nacionalidade> nacionalidade, List<Apelido> apelidos) {
         this.id = id;
         this.localNascimento = localNascimento;
         this.altura = altura;
@@ -194,16 +213,14 @@ public class Procurado {
         this.peso = peso;
         this.corCabelo = corCabelo;
         this.ocupacao = ocupacao;
-        this.idiomas = idiomas;
-        this.nacionalidade = nacionalidade;
         this.descricao = descricao;
         this.perigo = perigo;
         this.recompensa = recompensa;
         this.raca = raca;
+        this.idiomas = idiomas;
         this.crime = crime;
-        this.registro = registro;
+        this.identidade = identidade;
+        this.nacionalidade = nacionalidade;
+        this.apelidos = apelidos;
     }
-
-    public Procurado() {}
-
 }

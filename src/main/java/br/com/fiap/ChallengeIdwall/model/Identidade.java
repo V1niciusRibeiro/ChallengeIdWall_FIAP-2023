@@ -7,13 +7,13 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import java.util.Calendar;
 @Entity
-@Table(name = "T_REGISTRO")
-public class Registro {
+@Table(name = "T_IDENTIDADE")
+public class Identidade {
 
     @Id
-    @Column(name = "id_registro")
-    @SequenceGenerator(name = "registro", sequenceName = "SQ_REGISTRO", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "registro")
+    @Column(name = "id_identidade")
+    @SequenceGenerator(name = "identidade", sequenceName = "SQ_IDENTIDADE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "identidade")
     private int id;
 
     @Column(name = "nome")
@@ -32,7 +32,7 @@ public class Registro {
 
     @ManyToOne
     @JoinColumn(name = "id_procurado")
-    @JsonBackReference(value="registros")
+    @JsonBackReference(value="identidade")
     private Procurado procurado;
 
     @JsonBackReference
@@ -49,7 +49,7 @@ public class Registro {
         return id;
     }
 
-    public Registro setId(Integer id) {
+    public Identidade setId(Integer id) {
         this.id = id;
         return this;
     }
@@ -88,7 +88,7 @@ public class Registro {
         this.sexo = sexo;
     }
 
-    public Registro(int id, String nome, String sobrenome, Calendar dtNasc, String sexo, Procurado procurado) {
+    public Identidade(int id, String nome, String sobrenome, Calendar dtNasc, String sexo, Procurado procurado) {
         super();
         this.id = id;
         this.nome = nome;
@@ -98,6 +98,6 @@ public class Registro {
         this.procurado = procurado;
     }
 
-    public Registro() {}
+    public Identidade() {}
 
 }
