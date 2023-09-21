@@ -1,7 +1,7 @@
-package br.com.fiap.ChallengeIdWall.controller;
+package br.com.fiap.ChallengeIdwall.Controller;
 
-import br.com.fiap.ChallengeIdWall.model.Pais;
-import br.com.fiap.ChallengeIdWall.repository.PaisRepository;
+import br.com.fiap.ChallengeIdwall.Model.entity.Pais;
+import br.com.fiap.ChallengeIdwall.Model.repository.PaisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

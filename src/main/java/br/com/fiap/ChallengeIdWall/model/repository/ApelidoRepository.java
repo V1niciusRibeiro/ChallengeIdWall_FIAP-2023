@@ -1,8 +1,6 @@
-package br.com.fiap.ChallengeIdWall.repository;
+package br.com.fiap.ChallengeIdwall.Model.repository;
 
-import br.com.fiap.ChallengeIdWall.model.Apelido;
-import br.com.fiap.ChallengeIdWall.model.Procurado;
-import org.springframework.data.domain.Sort;
+import br.com.fiap.ChallengeIdwall.Model.entity.Apelido;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

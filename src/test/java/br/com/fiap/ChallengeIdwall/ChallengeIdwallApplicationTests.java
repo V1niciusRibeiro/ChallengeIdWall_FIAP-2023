@@ -1,4 +1,4 @@
-package br.com.fiap.ChallengeIdWall;
+package br.com.fiap.ChallengeIdwall;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

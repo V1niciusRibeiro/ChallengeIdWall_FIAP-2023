@@ -1,4 +1,4 @@
-package br.com.fiap.ChallengeIdWall.model;
+package br.com.fiap.ChallengeIdwall.Model.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;

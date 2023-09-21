@@ -1,4 +1,4 @@
-package br.com.fiap.ChallengeIdWall.model;
+package br.com.fiap.ChallengeIdwall.Model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;

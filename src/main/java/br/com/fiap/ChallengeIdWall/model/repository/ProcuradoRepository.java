@@ -1,11 +1,11 @@
-package br.com.fiap.ChallengeIdWall.repository;
+package br.com.fiap.ChallengeIdwall.Model.repository;
 
-import br.com.fiap.ChallengeIdWall.model.Procurado;
+import br.com.fiap.ChallengeIdwall.Model.entity.Procurado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import java.util.Calendar;
+
 import java.util.List;
 
 @Repository

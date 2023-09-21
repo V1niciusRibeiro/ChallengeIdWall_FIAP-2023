@@ -1,6 +1,6 @@
-package br.com.fiap.ChallengeIdWall.repository;
+package br.com.fiap.ChallengeIdwall.Model.repository;
 
-import br.com.fiap.ChallengeIdWall.model.Crime;
+import br.com.fiap.ChallengeIdwall.Model.entity.Crime;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;

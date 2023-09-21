@@ -1,7 +1,6 @@
-package br.com.fiap.ChallengeIdWall.repository;
+package br.com.fiap.ChallengeIdwall.Model.repository;
 
-import br.com.fiap.ChallengeIdWall.model.Identidade;
-import br.com.fiap.ChallengeIdWall.model.Nacionalidade;
+import br.com.fiap.ChallengeIdwall.Model.entity.Nacionalidade;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
