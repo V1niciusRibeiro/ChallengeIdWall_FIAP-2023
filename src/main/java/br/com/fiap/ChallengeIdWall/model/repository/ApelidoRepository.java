@@ -8,4 +8,5 @@ import java.util.List;
 public interface ApelidoRepository extends JpaRepository<Apelido, Integer> {
     List<Apelido> findByNome(String nome);
     List<Apelido> findByProcuradoId(int id);
+    Apelido findById(int id_apelido, int id_procurado);
 }
