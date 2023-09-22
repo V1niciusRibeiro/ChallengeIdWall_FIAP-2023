@@ -8,5 +8,7 @@ import java.util.List;
 
 @Repository
 public interface PaisRepository extends JpaRepository<Pais, Integer> {
-    List<Pais> findByNome(String nome);
+    List<Pais> findByName(String nome);
+
+    List<Pais> findByPais(String Pais);
 }

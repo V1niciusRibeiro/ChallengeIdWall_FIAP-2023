@@ -1,7 +1,11 @@
 package br.com.fiap.ChallengeIdwall.Model.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "T_PAIS")
 public class Pais {
@@ -15,29 +19,18 @@ public class Pais {
     @Column(name = "nm_pais")
     private String nome;
 
-    public int getId() {
-        return id;
-    }
-
-    public Pais setId(int id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public Pais setNome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
-    public Pais() {
-    }
+    public Pais() { }
 
     public Pais(int id, String nome) {
         this.id = id;
         this.nome = nome;
+    }
+
+    @Override
+    public String toString() {
+        return "Pais{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                '}';
     }
 }

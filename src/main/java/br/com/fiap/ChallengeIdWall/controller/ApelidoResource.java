@@ -1,7 +1,8 @@
-package br.com.fiap.ChallengeIdWall.controller;
+package br.com.fiap.ChallengeIdwall.Controller;
 
-import br.com.fiap.ChallengeIdWall.model.Apelido;
-import br.com.fiap.ChallengeIdWall.repository.ApelidoRepository;
+
+import br.com.fiap.ChallengeIdwall.Model.entity.Apelido;
+import br.com.fiap.ChallengeIdwall.Model.repository.ApelidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

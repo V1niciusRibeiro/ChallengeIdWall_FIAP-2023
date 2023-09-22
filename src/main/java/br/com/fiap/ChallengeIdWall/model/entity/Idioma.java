@@ -1,7 +1,12 @@
 package br.com.fiap.ChallengeIdwall.Model.entity;
 
+import br.com.fiap.ChallengeIdwall.Model.entity.IdiomaFalado;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "T_IDIOMA")
 public class Idioma {
@@ -15,29 +20,25 @@ public class Idioma {
     @Column(name = "nm_idioma")
     private String nome;
 
-    public int getId() {
-        return id;
-    }
-
-    public Idioma setId(int id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public Idioma setNome(String nome) {
-        this.nome = nome;
-        return this;
-    }
+    @ManyToOne
+    @JoinColumn(name = "idioma_falado_id")
+    private IdiomaFalado idiomaFalado;
 
     public Idioma() {
     }
 
-    public Idioma(int id, String nome) {
+    public Idioma(int id, String nome, IdiomaFalado idiomaFalado) {
         this.id = id;
         this.nome = nome;
+        this.idiomaFalado = idiomaFalado;
+    }
+
+    @Override
+    public String toString() {
+        return "Idioma{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", idiomaFalado=" + idiomaFalado +
+                '}';
     }
 }
