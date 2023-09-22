@@ -5,14 +5,16 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @Entity
 @Table(name = "T_PROCURADO")
 public class Procurado {
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name = "procurado", sequenceName = "SQ_PROCURADO", allocationSize = 1)
+    @SequenceGenerator(name = "procurado", sequenceName = "sq_procurado", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "procurado")
     private int id;
 
@@ -23,20 +25,20 @@ public class Procurado {
     private  String peso;
 
     @Column(name = "procurado_olho")
-    private String Olho;
+    private String olho;
+
     @Column(name = "procurado_altura")
     private  String altura;
+
     @Column(name = "procurado_cabelo")
     private String cabelo;
 
     @Column(name = "procurado_sexo")
     private String sexo;
 
-    @Column(name = "procurado_img")
-    private List<Imagem> imagem;
-
     @Column(name = "procurado_LocalNasc")
     private String localNascimento;
+
     @Column(name = "procurado_obs")
     private String observacao;
 
@@ -47,95 +49,46 @@ public class Procurado {
     private String cautela;
 
     @OneToMany(mappedBy = "procurado")
-    @JsonManagedReference(value="procurado_idioma")
-    private List<IdiomaFalado> idioma_falado;
+    private List<Imagem> imagem;
 
     @OneToMany(mappedBy = "procurado")
-    @JsonManagedReference(value="procurado_prisao")
-    private List<Crime> mandado_prisao;
-
-    public Procurado() {
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setRaca(String raca) {
-        this.raca = raca;
-    }
-
-    public void setPeso(String peso) {
-        this.peso = peso;
-    }
-
-    public void setOlho(String olho) {
-        Olho = olho;
-    }
-
-    public void setAltura(String altura) {
-        this.altura = altura;
-    }
-
-    public void setCabelo(String cabelo) {
-        this.cabelo = cabelo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public void setImagem(List<Imagem> imagem) {
-        this.imagem = imagem;
-    }
-
-    public void setLocalNascimento(String localNascimento) {
-        this.localNascimento = localNascimento;
-    }
-
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public void setCautela(String cautela) {
-        this.cautela = cautela;
-    }
-
-    public void setIdioma_falado(List<IdiomaFalado> idioma_falado) {
-        this.idioma_falado = idioma_falado;
-    }
-
-    public void setMandado_prisao(List<Crime> mandado_prisao) {
-        this.mandado_prisao = mandado_prisao;
-    }
-
-    public void setIdentidade(List<Identidade> identidade) {
-        this.identidade = identidade;
-    }
-
-    public void setNacionalidade(List<Nacionalidade> nacionalidade) {
-        this.nacionalidade = nacionalidade;
-    }
-
-    public void setApelido(List<Apelido> apelido) {
-        this.apelido = apelido;
-    }
+    private List<IdiomaFalado> idioma;
 
     @OneToMany(mappedBy = "procurado")
-    @JsonManagedReference(value="procurado_identidade")
+    private List<Crime> mandado;
+
+    @OneToMany(mappedBy = "procurado")
     private List<Identidade> identidade;
 
     @OneToMany(mappedBy = "procurado")
-    @JsonManagedReference(value="procurado_nacionalidade")
     private List<Nacionalidade> nacionalidade;
 
     @OneToMany(mappedBy = "procurado")
-    @JsonManagedReference(value="procurado_apelido")
     private List<Apelido> apelido;
+
+    public Procurado() { }
+    public Procurado(int id, String raca, String peso, String olho, String altura, String cabelo, String sexo,
+                     List<Imagem> imagem, String localNascimento, String observacao, String descricao,
+                     String cautela, List<IdiomaFalado> idioma, List<Crime> mandado,
+                     List<Identidade> identidade, List<Nacionalidade> nacionalidade, List<Apelido> apelido) {
+        this.id = id;
+        this.raca = raca;
+        this.peso = peso;
+        this.olho = olho;
+        this.altura = altura;
+        this.cabelo = cabelo;
+        this.sexo = sexo;
+        this.imagem = imagem;
+        this.localNascimento = localNascimento;
+        this.observacao = observacao;
+        this.descricao = descricao;
+        this.cautela = cautela;
+        this.idioma = idioma;
+        this.mandado = mandado;
+        this.identidade = identidade;
+        this.nacionalidade = nacionalidade;
+        this.apelido = apelido;
+    }
 
     @Override
     public String toString() {
@@ -143,7 +96,7 @@ public class Procurado {
                 "id=" + id +
                 ", raca='" + raca + '\'' +
                 ", peso='" + peso + '\'' +
-                ", Olho='" + Olho + '\'' +
+                ", Olho='" + olho + '\'' +
                 ", altura='" + altura + '\'' +
                 ", cabelo='" + cabelo + '\'' +
                 ", sexo='" + sexo + '\'' +
@@ -152,8 +105,8 @@ public class Procurado {
                 ", observacao='" + observacao + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", cautela='" + cautela + '\'' +
-                ", idioma_falado=" + idioma_falado +
-                ", mandado_prisao=" + mandado_prisao +
+                ", idioma=" + idioma +
+                ", mandado=" + mandado +
                 ", identidade=" + identidade +
                 ", nacionalidade=" + nacionalidade +
                 ", apelido=" + apelido +
