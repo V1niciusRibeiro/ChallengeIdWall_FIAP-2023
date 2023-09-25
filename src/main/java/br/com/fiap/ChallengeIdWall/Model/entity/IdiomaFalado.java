@@ -10,18 +10,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "T_IDIOMA_FALADO")
+@Table(name = "t_spokenLanguage")
 public class IdiomaFalado {
 
     @Id
-    @Column(name = "id_idioma_falado")
-    @SequenceGenerator(name = "idioma_falado", sequenceName = "SQ_IDIOMA_FALADO", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idioma_falado")
+    @Column(name = "spokenLanguage_id")
+    @SequenceGenerator(name = "spokenLanguage", sequenceName = "sq_spokenLanguage", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "spokenLanguage")
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "id_idioma")
-    @JsonBackReference(value = "idioma")
+    @JoinColumn(name = "language_id")
+    @JsonBackReference(value = "language")
     private Idioma language;
 
     @ManyToOne

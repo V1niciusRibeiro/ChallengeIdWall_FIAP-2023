@@ -64,16 +64,16 @@ public class ProcuradoController {
 
     @GetMapping("/spokenLanguage")
     public List<Procurado> getByLanguage(@RequestParam int spokenLanguage) {
-        return procuradoRepository.findByLanguageIdIn(spokenLanguage);
+        return procuradoRepository.findByLanguageId(spokenLanguage);
     }
 
     @GetMapping("/warrant")
     public List<Procurado> getByWarrant(@RequestParam int warrantId) {
-        return procuradoRepository.findByWarrantIdIn(warrantId);
+        return procuradoRepository.findByWarrantId(warrantId);
     }
     @GetMapping("/nickName")
     public List<Procurado> getByNickName(@RequestParam int nickName) {
-        return procuradoRepository.findByNickNameIdIn(nickName);
+        return procuradoRepository.findByNickNameId(nickName);
     }
     @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id){
