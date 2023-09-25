@@ -61,20 +61,20 @@ public class ProcuradoController {
     public List<Procurado> getByCautela(@RequestParam String careful) {
         return procuradoRepository.findByCareful(careful);
     }
-    /*
+
     @GetMapping("/spokenLanguage")
-    public List<Procurado> getByLanguage(@RequestParam List<IdiomaFalado> spokenLanguage) {
-        return procuradoRepository.findByLanguageIdIn(Collections.singleton(languageId));
+    public List<Procurado> getByLanguage(@RequestParam int spokenLanguage) {
+        return procuradoRepository.findByLanguageIdIn(spokenLanguage);
     }
+
     @GetMapping("/warrant")
-    public List<Procurado> getByWarrant(@RequestParam List<MandadoPrisao> warrantId) {
-        return procuradoRepository.findByWarrantIdIn(Collections.singleton(warrantId));
+    public List<Procurado> getByWarrant(@RequestParam int warrantId) {
+        return procuradoRepository.findByWarrantIdIn(warrantId);
     }
     @GetMapping("/nickName")
-    public List<Procurado> getByNickName(@RequestParam List<Apelido> nickName) {
-        return procuradoRepository. findByNickNameIdIn(Collections.singleton(nickName));
+    public List<Procurado> getByNickName(@RequestParam int nickName) {
+        return procuradoRepository.findByNickNameIdIn(nickName);
     }
-    */
     @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id){
         Procurado procurado = getById(id);

@@ -38,17 +38,14 @@ public interface ProcuradoRepository  extends JpaRepository<Procurado, Integer> 
     List<Procurado> findBySex(String sex);
 
     List<Procurado> findByCareful(String careful);
+    List<Procurado> findByLanguageIdIn(int languageId);
 
-    /*
-    List<Procurado> findByLanguageIdIn(Collection<List<IdiomaFalado>> languageId);
+    List<Procurado> findByWarrantIdIn(int warrantId);
 
-    List<Procurado> findByWarrantIdIn(Collection<List<MandadoPrisao>> warrantId);
+    Procurado findByIdentityId(int identityId);
 
-    Procurado findByIdentityId(List<Identidade> identityId);
+    List<Procurado> findByNationalityId(int nationalityId);
 
-    List<Procurado> findByNationalityId(List<Nacionalidade> nationalityId);
-
-    List<Procurado> findByNickNameIdIn(Collection<List<Apelido>> nickNameId);
-*/
+    List<Procurado> findByNickNameIdIn(int nickNameId);
 
 }

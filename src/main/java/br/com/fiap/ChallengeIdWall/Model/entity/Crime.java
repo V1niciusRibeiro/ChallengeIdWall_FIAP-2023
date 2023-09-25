@@ -8,19 +8,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "T_CRIME")
+@Table(name = "t_crime")
 public class Crime {
     @Id
     @Column(name = "id_crime")
-    @SequenceGenerator(name = "crime", sequenceName = "SQ_CRIME", allocationSize = 1)
+    @SequenceGenerator(name = "crime", sequenceName = "sq_crime", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "crime")
     private int id;
 
     @Column(name = "tipo")
-    private String tipo;
+    private String type;
 
     @Column(name = "descricao")
-    private String descricao;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "wanted_id")
@@ -28,9 +28,9 @@ public class Crime {
     private Procurado wantedId;
 
     @ManyToOne
-    @JoinColumn(name = "id_pais")
-    @JsonBackReference(value="pais")
-    private Pais pais;
+    @JoinColumn(name = "country_id")
+    @JsonBackReference(value="country")
+    private Pais country;
 
     public Crime() {}
 }
