@@ -27,12 +27,12 @@ public class CrimeResource {
     
     @GetMapping("type")
     public List<Crime> getByType(@RequestParam String type){
-        return crimeRepository.findByTipo(type);
+        return crimeRepository.findByType(type);
     }
 
     @GetMapping("description")
     public List<Crime> getByDescription(@RequestParam String description){
-        return crimeRepository.findByDescricao(description);
+        return crimeRepository.findByDescription(description);
     }
 
     @ResponseStatus(code = HttpStatus.CREATED)

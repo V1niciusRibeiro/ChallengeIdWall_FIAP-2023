@@ -16,10 +16,10 @@ public class Crime {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "crime")
     private int id;
 
-    @Column(name = "tipo")
+    @Column(name = "type")
     private String type;
 
-    @Column(name = "descricao")
+    @Column(name = "description")
     private String description;
 
     @ManyToOne
@@ -30,7 +30,7 @@ public class Crime {
     @ManyToOne
     @JoinColumn(name = "country_id")
     @JsonBackReference(value="country")
-    private Pais country;
+    private Pais countryId;
 
     public Crime() {}
 }

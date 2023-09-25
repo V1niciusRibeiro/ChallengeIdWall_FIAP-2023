@@ -8,12 +8,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "T_MANDADO_PRISAO")
+@Table(name = "t_warrant")
 public class MandadoPrisao {
     @Id
-    @Column(name = "id_mandado")
-    @SequenceGenerator(name = "mandado", sequenceName = "SQ_MANDADO", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mandado")
+    @Column(name = "warrant_id")
+    @SequenceGenerator(name = "warrant", sequenceName = "sq_warrant", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "warrant")
     private int id;
 
     @ManyToOne
@@ -21,11 +21,11 @@ public class MandadoPrisao {
     @JsonBackReference(value ="wanted")
     private Procurado wantedId;
 
-    @Column(name = "acusacao")
-    private String acusacao;
+    @Column(name = "acusation")
+    private String acusation;
 
-    @Column(name = "traducao_acusacao")
-    private String traducao_acusacao;
+    @Column(name = "acusation_translate")
+    private String acusationTranslate;
 
     @ManyToOne
     @JoinColumn(name = "country_id")

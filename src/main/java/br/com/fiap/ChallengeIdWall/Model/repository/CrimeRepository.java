@@ -7,7 +7,7 @@ import java.util.List;
 
 @Repository
 public interface CrimeRepository extends JpaRepository<Crime, Integer> {
-    List<Crime> findByTipo(String tipo);
-    List<Crime> findByDescricao(String descricao);
-    List<Crime> findByPaisId(int id);
+    List<Crime> findByType(String type);
+    List<Crime> findByDescription(String description);
+    List<Crime> findByCountryId(int countryId);
 }

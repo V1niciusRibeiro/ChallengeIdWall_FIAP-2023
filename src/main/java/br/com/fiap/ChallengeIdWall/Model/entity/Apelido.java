@@ -8,13 +8,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "T_APELIDO")
+@Table(name = "t_nickName")
 public class Apelido {
 
     @Id
-    @Column(name = "id_apelido")
-    @SequenceGenerator(name = "apelido", sequenceName = "SQ_APELIDO", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "apelido")
+    @Column(name = "nickName_id")
+    @SequenceGenerator(name = "nickName", sequenceName = "sqs_nickName", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "nickName")
     private int id;
 
     @ManyToOne
@@ -22,6 +22,6 @@ public class Apelido {
     @JsonBackReference(value ="wanted")
     private Procurado wantedId;
 
-    @Column(name = "nm_apelido")
+    @Column(name = "nickName")
     private String name;
 }
