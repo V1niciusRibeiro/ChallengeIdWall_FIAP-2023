@@ -2,7 +2,6 @@ package br.com.fiap.ChallengeIdWall.Model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "t_spokenLanguage")
-public class IdiomaFalado {
+public class SpokenLanguage {
 
     @Id
     @Column(name = "spokenLanguage_id")
@@ -22,12 +21,12 @@ public class IdiomaFalado {
     @ManyToOne
     @JoinColumn(name = "language_id")
     @JsonBackReference(value = "language")
-    private Idioma language;
+    private Language language;
 
     @ManyToOne
     @JoinColumn(name = "wanted_id")
     @JsonBackReference(value ="wanted")
-    private Procurado wantedId;
-    public IdiomaFalado() {
+    private Wanted wantedId;
+    public SpokenLanguage() {
     }
 }

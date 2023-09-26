@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("crime")
-public class CrimeResource {
+@RequestMapping("/crime")
+public class CrimeController {
 
     @Autowired
     private CrimeRepository crimeRepository;
 
-    @GetMapping
+    @GetMapping("/list")
     public List<Crime> getAll(){
         return crimeRepository.findAll();
     }
@@ -25,32 +25,22 @@ public class CrimeResource {
         return crimeRepository.findById(id).get();
     }
     
-    @GetMapping("type")
+    @GetMapping("/type")
     public List<Crime> getByType(@RequestParam String type){
         return crimeRepository.findByType(type);
     }
 
-    @GetMapping("description")
-    public List<Crime> getByDescription(@RequestParam String description){
+    @GetMapping("/description")
+    public List<Crime> getByDescription(@RequestParam String description) {
         return crimeRepository.findByDescription(description);
     }
-
-    @ResponseStatus(code = HttpStatus.CREATED)
-    @PostMapping
-    public Crime post(@RequestBody Crime crime){
-        return crimeRepository.save(crime);
+    @GetMapping("/country")
+    public List<Crime> getByCountryId(@RequestParam int countryId) {
+        return crimeRepository.findByCountryId(countryId);
     }
-
-    @PutMapping("{id}")
-    public Crime put(@RequestBody Crime crime, @PathVariable Integer id){
-        crime.setId(id);
-        return crimeRepository.save(crime);
-    }
-
     @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id){
         Crime crime = getById(id);
         crimeRepository.delete(crime);
     }
-    
 }

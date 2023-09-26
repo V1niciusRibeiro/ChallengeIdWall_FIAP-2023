@@ -11,7 +11,7 @@ public class ChallengeIdWallApplication {
 	public static void main(String[] args) {
 
 		System.out.println(InterpolAPI.getInstance().execute());
-		LoadDB.populateDB(InterpolAPI.getInstance().execute());
+		//LoadDB.populateDB(InterpolAPI.getInstance().execute());
 
 		//SpringApplication.run(ChallengeIdWallApplication.class, args);
 	}

@@ -3,17 +3,16 @@ package br.com.fiap.ChallengeIdWall.Model.entity;
 import jakarta.persistence.*;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "T_WANTED")
-public class Procurado {
+@Table(name = "t_wanted")
+public class Wanted {
     @Id
-    @Column(name = "id")
+    @Column(name = "wanted_id")
     @SequenceGenerator(name = "wanted", sequenceName = "sq_wanted", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "wanted")
     private int id;
@@ -49,24 +48,24 @@ public class Procurado {
     private String careful;
 
     @OneToMany(mappedBy = "wantedId")
-    private List<Imagem> imageId;
+    private List<Image> imageId;
 
     @OneToMany(mappedBy = "wantedId")
-    private List<IdiomaFalado> languageId;
+    private List<SpokenLanguage> languageId;
 
     @OneToMany(mappedBy = "wantedId")
-    private List<MandadoPrisao> warrantId;
+    private List<Warrant> warrantId;
 
     @OneToMany(mappedBy = "wantedId")
     private List<Crime> crimeId;
 
     @OneToMany(mappedBy = "wantedId")
-    private List<Identidade> identityId;
+    private List<Identity> identityId;
 
     @OneToMany(mappedBy = "wantedId")
-    private List<Nacionalidade> nationalityId;
+    private List<Nationality> nationalityId;
 
     @OneToMany(mappedBy = "wantedId")
-    private List<Apelido> nickNameId;
-    public Procurado() { }
+    private List<NickName> nickNameId;
+    public Wanted() { }
 }

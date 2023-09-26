@@ -8,11 +8,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "T_Image")
-public class Imagem {
+@Table(name = "t_image")
+public class Image {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "image_id")
     @SequenceGenerator(name = "image", sequenceName = "sq_image", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "image")
     private int id;
@@ -20,7 +20,7 @@ public class Imagem {
     @ManyToOne
     @JoinColumn(name = "wanted_id")
     @JsonBackReference(value ="wanted")
-    private Procurado wantedId;
+    private Wanted wantedId;
 
     @Column(name = "original_image")
     private String original;
@@ -31,5 +31,5 @@ public class Imagem {
     @Column(name = "small_image")
     private String small;
 
-    public Imagem() { }
+    public Image() { }
 }

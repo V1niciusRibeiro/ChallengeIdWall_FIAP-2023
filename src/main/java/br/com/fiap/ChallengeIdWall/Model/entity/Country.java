@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "t_country")
-public class Pais {
+public class Country {
 
     @Id
     @Column(name = "country_id")
@@ -19,5 +19,5 @@ public class Pais {
     @Column(name = "country_name")
     private String name;
 
-    public Pais() { }
+    public Country() { }
 }

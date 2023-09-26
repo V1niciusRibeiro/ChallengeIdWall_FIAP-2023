@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "t_nationality")
-public class Nacionalidade {
+public class Nationality {
 
     @Id
     @Column(name = "nationality_id")
@@ -20,12 +20,12 @@ public class Nacionalidade {
     @ManyToOne
     @JoinColumn(name = "wanted_id")
     @JsonBackReference(value ="wanted")
-    private Procurado wantedId;
+    private Wanted wantedId;
 
     @ManyToOne
     @JoinColumn(name = "country_id")
     @JsonBackReference(value="country")
-    private Pais country;
-    public Nacionalidade() {
+    private Country countryId;
+    public Nationality() {
     }
 }

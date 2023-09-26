@@ -11,7 +11,7 @@ import lombok.Setter;
 @Table(name = "t_crime")
 public class Crime {
     @Id
-    @Column(name = "id_crime")
+    @Column(name = "crime_id")
     @SequenceGenerator(name = "crime", sequenceName = "sq_crime", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "crime")
     private int id;
@@ -25,12 +25,12 @@ public class Crime {
     @ManyToOne
     @JoinColumn(name = "wanted_id")
     @JsonBackReference(value ="wanted")
-    private Procurado wantedId;
+    private Wanted wantedId;
 
     @ManyToOne
     @JoinColumn(name = "country_id")
     @JsonBackReference(value="country")
-    private Pais countryId;
+    private Country countryId;
 
     public Crime() {}
 }
