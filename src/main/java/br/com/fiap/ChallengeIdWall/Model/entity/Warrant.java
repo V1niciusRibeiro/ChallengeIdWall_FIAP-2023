@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "t_warrant")
-public class MandadoPrisao {
+public class Warrant {
     @Id
     @Column(name = "warrant_id")
     @SequenceGenerator(name = "warrant", sequenceName = "sq_warrant", allocationSize = 1)
@@ -19,7 +19,7 @@ public class MandadoPrisao {
     @ManyToOne
     @JoinColumn(name = "wanted_id")
     @JsonBackReference(value ="wanted")
-    private Procurado wantedId;
+    private Wanted wantedId;
 
     @Column(name = "acusation")
     private String acusation;
@@ -30,7 +30,7 @@ public class MandadoPrisao {
     @ManyToOne
     @JoinColumn(name = "country_id")
     @JsonBackReference(value="country")
-    private Pais countryId;
+    private Country countryId;
 
-    public MandadoPrisao() {}
+    public Warrant() {}
 }
