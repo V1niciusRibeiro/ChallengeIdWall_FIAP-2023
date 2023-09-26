@@ -36,16 +36,3 @@ public class FBInvestigationJson {
     }
 
 }
-
-
-    // Parse o JSON
-    JSONObject jsonObject = new JSONObject(jsonString);
-
-    // Obtenha o array "items"
-    JSONArray itemsArray = jsonObject.getJSONArray("items");
-
-    // Conte os elementos no array
-    int numberOfItems = itemsArray.length();
-
-// Imprima o número de elementos
-System.out.println("Número de elementos no array 'items': " + numberOfItems);

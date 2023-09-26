@@ -4,8 +4,4 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.io.IOException;
 
-public class FBInvestigationAPI  {
-
-
-
-}
+public class FBInvestigationAPI  {}
