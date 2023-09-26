@@ -21,7 +21,6 @@ public class ProcuradoController {
     }
     @GetMapping("{id}")
     public Procurado getById(@PathVariable Integer id){
-
         return procuradoRepository.findById(id).get();
     }
     @GetMapping("/race")
