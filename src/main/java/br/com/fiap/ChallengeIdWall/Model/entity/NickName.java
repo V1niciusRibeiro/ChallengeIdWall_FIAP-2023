@@ -9,18 +9,18 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "t_nickName")
-public class Apelido {
+public class NickName {
 
     @Id
     @Column(name = "nickName_id")
-    @SequenceGenerator(name = "nickName", sequenceName = "sqs_nickName", allocationSize = 1)
+    @SequenceGenerator(name = "nickName", sequenceName = "sq_nickName", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "nickName")
     private int id;
 
     @ManyToOne
     @JoinColumn(name = "wanted_id")
     @JsonBackReference(value ="wanted")
-    private Procurado wantedId;
+    private Wanted wantedId;
 
     @Column(name = "nickName")
     private String name;

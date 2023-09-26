@@ -1,3 +1,4 @@
+/*
 package br.com.fiap.ChallengeIdWall.Model.DataSource.Interpol;
 
 import java.io.BufferedReader;
@@ -167,3 +168,4 @@ public class InterpolAPI {
     }
 
 }
+*/
