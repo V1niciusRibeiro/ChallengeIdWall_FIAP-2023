@@ -1,10 +1,11 @@
-/*
+
 package br.com.fiap.ChallengeIdWall.Model.DataSource.Interpol;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 
 public class InterpolAPI {
@@ -13,6 +14,8 @@ public class InterpolAPI {
 
     private static final String baseURL = "https://ws-public.interpol.int/notices/v1/";
     private static final String[] notices = {"red","yellow","un"};
+
+    private String noticeID;
     private String foreName;
     private String name;
     private String nationality;
@@ -31,6 +34,11 @@ public class InterpolAPI {
             instance = new InterpolAPI();
         }
         return instance;
+    }
+
+    public InterpolAPI setNoticeID(String noticeID){
+        this.noticeID = noticeID;
+        return this;
     }
 
     public InterpolAPI setForeName(String foreName) {
@@ -85,65 +93,79 @@ public class InterpolAPI {
 
     public String execute() {
 
-        StringBuilder apiFinalResponse = new StringBuilder("{");
+        StringBuilder apiFinalResponse = new StringBuilder();
 
-        for (String notice : notices){
+        if (noticeID != null) {
+            apiFinalResponse.append(performAPICall(baseURL+noticeID));
+        }else {
 
-            String apiUrl = baseURL + notice;
+            apiFinalResponse.append("{");
 
-            StringBuilder queryString = new StringBuilder("?");
+            for (int i = 0; i < notices.length; i++) {
 
-            if (foreName != null) {
-                queryString.append("forename=").append(foreName).append("&");
+                String notice = notices[i];
+
+                String apiUrl = baseURL + notice;
+
+                StringBuilder queryString = new StringBuilder("?");
+
+                if (foreName != null) {
+                    queryString.append("forename=").append(foreName).append("&");
+                }
+
+                if (name != null) {
+                    queryString.append("name=").append(name).append("&");
+                }
+
+                if (nationality != null) {
+                    queryString.append("nationality=").append(nationality).append("&");
+                }
+
+                if (ageMin > 0) {
+                    queryString.append("ageMin=").append(ageMin).append("&");
+                }
+
+                if (ageMax > 0) {
+                    queryString.append("ageMax=").append(ageMax).append("&");
+                }
+
+                if (freeText != null) {
+                    queryString.append("freeText=").append(freeText).append("&");
+                }
+
+                if (sexId != null) {
+                    queryString.append("sexId=").append(sexId).append("&");
+                }
+
+                if (arrestWarrantCountryId != null) {
+                    queryString.append("arrestWarrantCountryId=").append(arrestWarrantCountryId).append("&");
+                }
+
+                if (page >= 1) {
+                    queryString.append("page=").append(page).append("&");
+                }
+
+                if (resultPerPage >= 1) {
+                    queryString.append("resultPerPage=").append(resultPerPage).append("&");
+                }
+
+                String apiResponse = performAPICall(apiUrl + queryString.toString());
+
+                String responseDivisor = (i == notices.length - 1) ? "" : ",";
+
+                apiFinalResponse.append('"').append(notice).append('"').append(":").append(apiResponse).append(responseDivisor);
             }
-
-            if (name != null) {
-                queryString.append("name=").append(name).append("&");
-            }
-
-            if (nationality != null) {
-                queryString.append("nationality=").append(nationality).append("&");
-            }
-
-            if (ageMin > 0) {
-                queryString.append("ageMin=").append(ageMin).append("&");
-            }
-
-            if (ageMax > 0) {
-                queryString.append("ageMax=").append(ageMax).append("&");
-            }
-
-            if (freeText != null) {
-                queryString.append("freeText=").append(freeText).append("&");
-            }
-
-            if (sexId != null) {
-                queryString.append("sexId=").append(sexId).append("&");
-            }
-
-            if (arrestWarrantCountryId != null) {
-                queryString.append("arrestWarrantCountryId=").append(arrestWarrantCountryId).append("&");
-            }
-
-            if (page >= 1) {
-                queryString.append("page=").append(page).append("&");
-            }
-
-            if (resultPerPage >= 1) {
-                queryString.append("resultPerPage=").append(resultPerPage).append("&");
-            }
-
-            String apiResponse = performAPICall(apiUrl + queryString.toString());
-
-            apiFinalResponse.append('"').append(notice).append('"').append(":").append(apiResponse).append(",");
+            apiFinalResponse.append("}");
         }
 
-        return apiFinalResponse.append("}").toString();
+        return apiFinalResponse.toString();
     }
 
-    private String performAPICall(String apiUrl) {
+    public String performAPICall(String apiUrl) {
         try {
-            URL url = new URL(apiUrl);
+
+            URL url = URI.create(apiUrl).toURL();
+
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
 
@@ -161,11 +183,11 @@ public class InterpolAPI {
                 System.err.println("Erro na requisição. Código de resposta: " + responseCode);
                 return null;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        } catch (Exception e) {
+            e.getMessage();
             return null;
         }
     }
 
 }
-*/

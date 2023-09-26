@@ -51,7 +51,7 @@ public class Wanted {
     private List<Image> imageId;
 
     @OneToMany(mappedBy = "wantedId")
-    private List<SpokenLanguage> languageId;
+    private List<SpokenLanguage> spokenLanguageId;
 
     @OneToMany(mappedBy = "wantedId")
     private List<Warrant> warrantId;

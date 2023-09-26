@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
-@Table(name = "t_spokenLanguage")
+@Table(name = "t_language")
 public class Language {
 
     @Id
@@ -19,9 +21,8 @@ public class Language {
     @Column(name = "nm_language")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "spokenLanguage_id")
-    private SpokenLanguage spokenLanguageId;
+    @OneToMany(mappedBy = "language_id")
+    private List<SpokenLanguage> spokenLanguageId;
 
     public Language() {
     }
