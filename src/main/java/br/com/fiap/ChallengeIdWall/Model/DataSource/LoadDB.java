@@ -1,3 +1,4 @@
+/*
 package br.com.fiap.ChallengeIdWall.Model.DataSource;
 
 import com.google.gson.*;
@@ -15,4 +16,4 @@ public class LoadDB {
     }
 
 }
-
+*/
