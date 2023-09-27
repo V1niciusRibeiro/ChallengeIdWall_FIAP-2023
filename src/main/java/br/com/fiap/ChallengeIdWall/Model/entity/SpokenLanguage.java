@@ -21,7 +21,7 @@ public class SpokenLanguage {
     @ManyToOne
     @JoinColumn(name = "language_id")
     @JsonBackReference(value = "language")
-    private Language language;
+    private Language languageId;
 
     @ManyToOne
     @JoinColumn(name = "wanted_id")

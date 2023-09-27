@@ -26,8 +26,8 @@ public class SpokenLanguageController {
         return spokenLanguageRepository.findById(id).get();
     }
     @GetMapping("/language")
-    public List<SpokenLanguage> getByLanguage(@RequestParam String language) {
-        return spokenLanguageRepository.findByLanguage(language);
+    public List<SpokenLanguage> getByLanguage(@RequestParam int languageId) {
+        return spokenLanguageRepository.findByLanguageId(languageId);
     }
     @GetMapping("/wanted")
     public List<SpokenLanguage> getByWanted(@RequestParam int wantedId) {

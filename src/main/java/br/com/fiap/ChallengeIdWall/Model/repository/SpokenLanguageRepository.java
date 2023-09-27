@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface SpokenLanguageRepository extends JpaRepository<SpokenLanguage, Integer> {
-    List<SpokenLanguage> findByLanguage(String language);
+    List<SpokenLanguage> findByLanguageId(int languageId);
     List<SpokenLanguage> findByWantedId(int wantedId);
 }
