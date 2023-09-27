@@ -27,7 +27,7 @@ public class LanguageController {
         return languageRepository.findByPartialNome(partialName);
     }
     @GetMapping("/name")
-    public List<Language> getByName(@RequestParam String name) {
+    public Language getByName(@RequestParam String name) {
         return languageRepository.findByName(name);
     }
     @GetMapping("/spoken-language")

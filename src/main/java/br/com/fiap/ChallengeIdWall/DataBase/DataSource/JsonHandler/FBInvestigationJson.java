@@ -1,4 +1,4 @@
-package br.com.fiap.ChallengeIdWall.Model.DataSource.FBI;
+package br.com.fiap.ChallengeIdWall.DataBase.DataSource.JsonHandler;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
