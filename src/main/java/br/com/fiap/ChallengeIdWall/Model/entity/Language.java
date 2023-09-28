@@ -18,7 +18,7 @@ public class Language {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "language")
     private int id;
 
-    @Column(name = "nm_language")
+    @Column(name = "nm_language", unique = true)
     private String name;
 
     @OneToMany(mappedBy = "languageId")
@@ -26,4 +26,5 @@ public class Language {
 
     public Language() {
     }
+
 }

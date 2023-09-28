@@ -13,7 +13,7 @@ public interface LanguageRepository extends JpaRepository<Language, Integer> {
     @Query("SELECT i FROM Language i WHERE i.name LIKE %:partialName%")
     List<Language> findByPartialNome(String partialName);
 
-    List<Language> findByName(String name);
+    Language findByName(String name);
 
     List<Language> findBySpokenLanguageId(int spokenLanguageId);
 

@@ -12,6 +12,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "t_wanted")
 public class Wanted {
+
     @Id
     @Column(name = "wanted_id")
     @SequenceGenerator(name = "wanted", sequenceName = "sq_wanted", allocationSize = 1)
@@ -69,4 +70,29 @@ public class Wanted {
     @OneToMany(mappedBy = "wantedId")
     private List<NickName> nickNameId;
     public Wanted() { }
+
+    public Wanted(int id,
+                  String race,
+                  String weight,
+                  String eye,
+                  String height,
+                  String hair,
+                  String sex,
+                  String birthPlace,
+                  String observation,
+                  String description,
+                  String careful) {
+        this.id = id;
+        this.race = race;
+        this.weight = weight;
+        this.eye = eye;
+        this.height = height;
+        this.hair = hair;
+        this.sex = sex;
+        this.birthPlace = birthPlace;
+        this.observation = observation;
+        this.description = description;
+        this.careful = careful;
+    }
+
 }
