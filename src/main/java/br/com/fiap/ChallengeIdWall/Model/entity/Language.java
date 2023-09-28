@@ -24,6 +24,11 @@ public class Language {
     @OneToMany(mappedBy = "language_id")
     private List<SpokenLanguage> spokenLanguageId;
 
+    public Language(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Language() {
     }
 

@@ -24,4 +24,10 @@ public class NickName {
 
     @Column(name = "nickName")
     private String name;
+
+    public NickName(int id, Wanted wantedId, String name) {
+        this.id = id;
+        this.wantedId = wantedId;
+        this.name = name;
+    }
 }

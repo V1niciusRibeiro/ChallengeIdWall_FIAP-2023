@@ -32,5 +32,13 @@ public class Warrant {
     @JsonBackReference(value="country")
     private Country countryId;
 
+    public Warrant(int id, Wanted wantedId, String acusation, String acusationTranslate, Country countryId) {
+        this.id = id;
+        this.wantedId = wantedId;
+        this.acusation = acusation;
+        this.acusationTranslate = acusationTranslate;
+        this.countryId = countryId;
+    }
+
     public Warrant() {}
 }
