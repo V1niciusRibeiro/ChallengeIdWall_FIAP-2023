@@ -1,4 +1,4 @@
-package br.com.fiap.ChallengeIdWall.Model.DataSource.FBI.DataModel;
+package br.com.fiap.ChallengeIdWall.DataBase.DataSource.DataModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

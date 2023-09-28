@@ -1,13 +1,7 @@
 
-package br.com.fiap.ChallengeIdWall.DataBase.DataSource.API.UrlManeger;
+package br.com.fiap.ChallengeIdWall.DataBase.DataSource.API.UrlManager;
 
 import br.com.fiap.ChallengeIdWall.DataBase.DataSource.API.APICaller;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
 
 public class InterpolAPI {
 
@@ -103,7 +97,7 @@ public class InterpolAPI {
             apiResponse.append("{");
             for (String notice : notices) {
 
-                apiUrl.append(notice).append("?");
+                apiUrl.replace(baseURL.length(),apiUrl.length(),notice+"?");
                 apiResponse.append('"').append(notice).append('"').append(":");
 
                 appendQueryParam(apiUrl, "forename", foreName);
@@ -128,7 +122,7 @@ public class InterpolAPI {
     }
 
     private void appendQueryParam(StringBuilder apiUrl, String paramName, Object paramValue) {
-        if (paramValue != null) {
+        if (paramValue != null && !paramValue.equals("") && (Integer) paramValue != 0) {
             apiUrl.append(paramName).append("=").append(paramValue).append("&");
         }
     }

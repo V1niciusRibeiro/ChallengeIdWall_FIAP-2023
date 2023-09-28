@@ -26,6 +26,13 @@ public class Nationality {
     @JoinColumn(name = "country_id")
     @JsonBackReference(value="country")
     private Country countryId;
+
+    public Nationality(int id, Wanted wantedId, Country countryId) {
+        this.id = id;
+        this.wantedId = wantedId;
+        this.countryId = countryId;
+    }
+
     public Nationality() {
     }
 }

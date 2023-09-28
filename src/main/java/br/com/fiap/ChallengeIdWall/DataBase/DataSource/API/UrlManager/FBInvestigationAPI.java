@@ -1,6 +1,5 @@
-package br.com.fiap.ChallengeIdWall.Model.DataSource.FBI.Connection;
+package br.com.fiap.ChallengeIdWall.DataBase.DataSource.API.UrlManager;
 
-import br.com.fiap.ChallengeIdWall.Model.DataSource.FBI.FBInvestigationJson;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,6 +14,10 @@ public class FBInvestigationAPI  {
     static int currentPage = 1;
     static int totalPages = 100;
     static List<String> jsonList = new ArrayList<>();
+
+    public static List<String> getJsonList() {
+        return jsonList;
+    }
     public static void getCleanJson() {
         while (currentPage <= totalPages) {
             try {

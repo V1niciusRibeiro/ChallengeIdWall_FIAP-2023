@@ -27,6 +27,11 @@ public class SpokenLanguage {
     @JoinColumn(name = "wanted_id")
     @JsonBackReference(value ="wanted")
     private Wanted wantedId;
-    public SpokenLanguage() {
+
+    public SpokenLanguage(int id, Language languageId, Wanted wantedId) {
+        this.id = id;
+        this.languageId = languageId;
+        this.wantedId = wantedId;
     }
+
 }

@@ -31,5 +31,13 @@ public class Image {
     @Column(name = "small_image")
     private String small;
 
+    public Image(int id, Wanted wantedId, String original, String big, String small) {
+        this.id = id;
+        this.wantedId = wantedId;
+        this.original = original;
+        this.big = big;
+        this.small = small;
+    }
+
     public Image() { }
 }

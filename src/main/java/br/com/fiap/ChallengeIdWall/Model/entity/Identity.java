@@ -24,13 +24,13 @@ public class Identity {
     @Column(name = "name_id")
     private String name;
 
-    @Column(name = "lastName_id")
-    private String lastName;
+    @Column(name = "foreName_id")
+    private String foreName;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "birthDate_id")
-    private Date birthDate;
+    private String birthDate;
 
     @Column(name = "sex_id")
     private String sex;
@@ -43,12 +43,13 @@ public class Identity {
     public Identity() {
     }
 
-    public Identity(int id, String name, String lastName, Date birthDate, String sex) {
+    public Identity(int id, String name, String foreName, String birthDate, String sex, Wanted wanted) {
         this.id = id;
         this.name = name;
-        this.lastName = lastName;
+        this.foreName = foreName;
         this.birthDate = birthDate;
         this.sex = sex;
+        this.wantedId = wanted;
     }
 
     @Override
@@ -56,7 +57,7 @@ public class Identity {
         return "Identidade{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", lastName='" + foreName + '\'' +
                 ", birthDate=" + birthDate +
                 ", sex='" + sex + '\'' +
                 '}';
