@@ -21,7 +21,7 @@ public class Language {
     @Column(name = "nm_language", unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "language_id")
+    @OneToMany(mappedBy = "languageId")
     private List<SpokenLanguage> spokenLanguageId;
 
     public Language(int id, String name) {

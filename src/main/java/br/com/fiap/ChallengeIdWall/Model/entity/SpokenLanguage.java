@@ -21,19 +21,17 @@ public class SpokenLanguage {
     @ManyToOne
     @JoinColumn(name = "language_id")
     @JsonBackReference(value = "language")
-    private Language language;
+    private Language languageId;
 
     @ManyToOne
     @JoinColumn(name = "wanted_id")
     @JsonBackReference(value ="wanted")
     private Wanted wantedId;
 
-    public SpokenLanguage(int id, Language language, Wanted wantedId) {
+    public SpokenLanguage(int id, Language languageId, Wanted wantedId) {
         this.id = id;
-        this.language = language;
+        this.languageId = languageId;
         this.wantedId = wantedId;
     }
 
-    public SpokenLanguage() {
-    }
 }

@@ -1,20 +1,26 @@
 package br.com.fiap.ChallengeIdWall;
 
-import br.com.fiap.ChallengeIdWall.DataBase.DataSource.API.UrlManager.InterpolAPI;
-import br.com.fiap.ChallengeIdWall.DataBase.DataSource.JsonHandler.InterpolJson;
+import br.com.fiap.ChallengeIdWall.DataBase.DataSource.DataMapper.FBInvestigationDataMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import br.com.fiap.ChallengeIdWall.DataBase.DataSource.API.UrlManager.InterpolAPI;
 
-import java.io.IOException;
+import javax.annotation.PostConstruct;
 
 @SpringBootApplication
 public class ChallengeIdWallApplication {
 
-	public static void main(String[] args) throws IOException {
+	@Autowired
+	private FBInvestigationDataMapper dataMapper;
 
-		System.out.println(InterpolJson.generateEntities(
-				"{\"date_of_birth\":\"2005/04/01\",\"distinguishing_marks\":null,\"weight\":null,\"nationalities\":[\"NL\"],\"entity_id\":\"2023/54608\",\"eyes_colors_id\":null,\"sex_id\":\"M\",\"place_of_birth\":null,\"forename\":\"DAMANICHIO\",\"arrest_warrants\":[{\"charge\":\"violation of the weapon legislation\\r\\nparticiaption in a criminal organisation\",\"issuing_country_id\":\"BE\",\"charge_translation\":null}],\"country_of_birth_id\":null,\"hairs_id\":null,\"name\":\"HALL\",\"languages_spoken_ids\":null,\"height\":null,\"_embedded\":{\"links\":[]},\"_links\":{\"self\":{\"href\":\"https://ws-public.interpol.int/notices/v1/red/2023-54608\"},\"images\":{\"href\":\"https://ws-public.interpol.int/notices/v1/red/2023-54608/images\"},\"thumbnail\":{\"href\":\"https://ws-public.interpol.int/notices/v1/red/2023-54608/images/62832956\"}}}"
-		));
+	public static void main(String[] args) {
+		SpringApplication.run(ChallengeIdWallApplication.class, args);
 
+		//System.out.println(InterpolAPI.getInstance().setAgeMax(18).setAgeMax(18).execute());
 	}
-
+	@PostConstruct
+	public void executeAfterStartup() throws Exception {
+		dataMapper.mapApiData();
+	}
 }

@@ -70,8 +70,8 @@ public class WantedController {
     }
 
     @GetMapping("/spokenLanguage")
-    public List<Wanted> getByLanguage(@RequestParam int spokenLanguage) {
-        return wantedRepository.findByLanguageId(spokenLanguage);
+    public List<Wanted> getByLanguage(@RequestParam int spokenLanguageId) {
+        return wantedRepository.findBySpokenLanguageId(spokenLanguageId);
     }
 
     @GetMapping("/warrant")
