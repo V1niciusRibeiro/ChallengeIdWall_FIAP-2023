@@ -5,6 +5,7 @@ import br.com.fiap.ChallengeIdWall.DataBase.DataSource.API.APICaller;
 
 public class InterpolAPI {
 
+    private InterpolAPI() { }
     private static InterpolAPI instance;
     public static InterpolAPI getInstance() {
         if (instance == null) {
@@ -27,8 +28,6 @@ public class InterpolAPI {
     private String arrestWarrantCountryId;
     private int page;
     private int resultPerPage;
-
-    private InterpolAPI() { }
 
     public InterpolAPI setNoticeID(String noticeID){
         this.noticeID = noticeID;
@@ -111,7 +110,7 @@ public class InterpolAPI {
                 appendQueryParam(apiUrl, "page", page);
                 appendQueryParam(apiUrl, "resultPerPage", resultPerPage);
 
-                apiUrl.setLength(apiUrl.length() - 1); // Remove o último "&" desnecessário
+                apiUrl.setLength(apiUrl.length() - 1); // Remove o último "&"  ou "?" desnecessário
                 apiResponse.append(APICaller.performAPICall(apiUrl.toString())).append(",");
             }
             apiResponse.setLength(apiResponse.length() - 1); // Remove a última vírgula desnecessária
@@ -122,9 +121,10 @@ public class InterpolAPI {
     }
 
     private void appendQueryParam(StringBuilder apiUrl, String paramName, Object paramValue) {
-        if (paramValue != null && !paramValue.equals("") && (Integer) paramValue != 0) {
+        if (paramValue != null && !"0".equals(paramValue.toString())) {
             apiUrl.append(paramName).append("=").append(paramValue).append("&");
         }
     }
+
 
 }

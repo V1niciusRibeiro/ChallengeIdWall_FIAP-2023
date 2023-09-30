@@ -1,26 +1,24 @@
 package br.com.fiap.ChallengeIdWall;
 
-import br.com.fiap.ChallengeIdWall.DataBase.DataSource.DataMapper.FBInvestigationDataMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.fiap.ChallengeIdWall.DataBase.LoadDB;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import br.com.fiap.ChallengeIdWall.DataBase.DataSource.API.UrlManager.InterpolAPI;
-
-import javax.annotation.PostConstruct;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class ChallengeIdWallApplication {
 
-	@Autowired
-	private FBInvestigationDataMapper dataMapper;
-
 	public static void main(String[] args) {
-		SpringApplication.run(ChallengeIdWallApplication.class, args);
 
-		//System.out.println(InterpolAPI.getInstance().setAgeMax(18).setAgeMax(18).execute());
-	}
-	@PostConstruct
-	public void executeAfterStartup() throws Exception {
-		dataMapper.mapApiData();
+		try {
+
+			ApplicationContext context = SpringApplication.run(ChallengeIdWallApplication.class, args);
+
+			LoadDB loadDB = context.getBean(LoadDB.class);
+			loadDB.loadDataBase();
+
+		} catch (Exception e){
+			System.err.println(e.getMessage());
+		}
 	}
 }
